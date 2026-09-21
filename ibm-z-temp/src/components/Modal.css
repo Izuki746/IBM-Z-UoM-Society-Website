@@ -1,0 +1,127 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(8, 5, 16, 0.84);
+  animation: modal-fade 0.2s ease-out;
+}
+
+.modal__panel {
+  position: relative;
+  width: min(680px, 100%);
+  max-height: calc(100svh - 40px);
+  overflow-y: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  background: var(--plum);
+  animation: modal-rise 0.3s var(--ease);
+}
+
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: rgba(12, 9, 22, 0.7);
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.modal__close:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 36px;
+}
+
+.detail__art {
+  aspect-ratio: 16 / 6;
+  margin: -36px -36px 8px;
+}
+
+.detail__tag {
+  color: var(--cyan);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.detail h2 {
+  padding-right: 40px;
+  font-family: var(--display);
+  font-size: clamp(44px, 8vw, 72px);
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.detail p {
+  color: var(--mist);
+}
+
+.detail__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  padding-block: 16px;
+  border-block: 1px solid var(--line);
+}
+
+.detail__facts dt {
+  color: var(--mist);
+  font-size: 13px;
+}
+
+.detail__facts dd {
+  margin: 2px 0 0;
+  font-weight: 500;
+}
+
+.detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.detail__note {
+  font-size: 14px;
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@media (max-width: 560px) {
+  .detail {
+    padding: 24px;
+  }
+
+  .detail__art {
+    margin: -24px -24px 8px;
+  }
+}

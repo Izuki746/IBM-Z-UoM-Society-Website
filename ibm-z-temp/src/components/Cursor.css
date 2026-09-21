@@ -1,0 +1,72 @@
+/*
+  THE Z CURSOR
+  cursor.png is your Z. The numbers after each url() are the "hot spot",
+  the exact pixel that does the clicking. 12 15 is the middle of the Z.
+  cursor-dark.png is the same Z in dark purple, used on the light
+  Activities section where a white Z would disappear.
+*/
+
+.has-cursor,
+.has-cursor a,
+.has-cursor button,
+.has-cursor label,
+.has-cursor summary,
+.has-cursor [data-cursor] {
+  cursor: url("../assets/cursor.png") 12 15, auto;
+}
+
+.has-cursor .section--paper,
+.has-cursor .section--paper * {
+  cursor: url("../assets/cursor-dark.png") 12 15, auto;
+}
+
+/* typing areas keep the normal text cursor so people can see where they're typing */
+.has-cursor input:not([type="radio"]),
+.has-cursor textarea {
+  cursor: text;
+}
+
+/* ---------- glow + ring that follow the mouse ---------- */
+
+.cursor-glow,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cursor-glow.is-visible {
+  opacity: 1;
+}
+
+.cursor-glow {
+  z-index: 40;
+  width: 560px;
+  height: 560px;
+  margin: -280px 0 0 -280px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(71, 219, 217, 0.1),
+    rgba(232, 1, 160, 0.05) 45%,
+    transparent 70%
+  );
+}
+
+/* the ring only shows around clickable things */
+.cursor-ring {
+  z-index: 150;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border: 1px solid var(--cyan);
+  border-radius: 50%;
+  transition: opacity 0.2s;
+}
+
+.cursor-ring.is-visible.is-active {
+  opacity: 0.9;
+}
